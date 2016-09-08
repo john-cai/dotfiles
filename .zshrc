@@ -25,8 +25,8 @@ export ZSH_THEME="clean"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-plugins=(vi-mode)
+plugins=(git vi-mode ruby)
+
 source $ZSH/oh-my-zsh.sh
 #export GOROOT=/usr/local/Cellar/go/1.4.2/libexec
 export GOROOT=/usr/local/go
@@ -58,12 +58,13 @@ alias gobuild-linux="GOOS=linux GOARCH=amd64 go build"
 alias testecho="echo $PWD"
 alias dc="docker-compose"
 alias dm="docker-machine"
+alias t="tree"
 export ZSH=$HOME/.oh-my-zsh
 
-alias vim='mvim -v'
+#alias vim='mvim -v'
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
 export TERM=screen-256color
-eval "$(docker-machine env dev)"
+#eval "$(docker-machine env dev)"
 bindkey "^R" history-incremental-search-backward
 alias d="docker"
 pushd()
@@ -104,16 +105,18 @@ function dip() {
 docker inspect -f '{{.NetworkSettings.IPAddress}}' docker-dns
 }
 
-# kamta dev environment in docker
-function ddev() {
-docker run --rm -it --dns `dip` --dns-search docker --name ${1}1 --hostname ${1}1 -v /Users/johncai/Projects/$1:/opt/sendgrid/$1 --volumes-from syslog --volumes-from spool docker.sendgrid.net/sendgrid/$1 /bin/bash
-}
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 alias g="grep"
 
 # ...other stuff...
 #
- if [[ ! $TERM =~ screen ]]; then
-     exec tmux
- fi
+if [[ ! $TERM =~ screen ]]; then
+   exec tmux
+fi
+
+unalias gb
+export PYENV_ROOT="$HOME/.pyenv" >> ~/.bash_profile
+export PATH="$PYENV_ROOT/bin:$PATH" >> ~/.bash_profile
+eval "$(pyenv init -)" >> ~/.bash_profile
+alias tmuxkillall="tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
