@@ -6,6 +6,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'fatih/vim-go'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'kylef/apiblueprint.vim'
+Plugin 'maksimr/vim-jsbeautify'
 Bundle 'tpope/vim-markdown'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'terryma/vim-multiple-cursors'
@@ -40,3 +42,19 @@ set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
 let g:neocomplete#enable_at_startup = 1
+if $TMUX == ''
+    set clipboard=unnamed
+endif
+" Clean up unformatted JSON"
+:command JSClean :%!python -m json.tool
+map <c-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" " for json
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" " for jsx
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" " for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" " for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
