@@ -1,0 +1,10 @@
+matches:
+  # Simple text replacement
+  - trigger: ":rejectrecruiter"
+    form: |
+      Hi, [[name]],
+
+      Thanks for reaching out! Unfortunately, I am not interested at this time
+
+      Best,
+      John
