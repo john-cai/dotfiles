@@ -1,5 +1,7 @@
 matches:
   # Simple text replacement
+  - trigger: ":avar"
+    replace: "Ævar"
   - trigger: ":rejectrecruiter"
     form: |
       Hi, [[name]],
