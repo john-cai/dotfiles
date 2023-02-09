@@ -34,7 +34,7 @@
     make = rebase --exec \"make\" origin/master
     update = "!f() {\
     	git branch -D $1;\
-    	git checkout -b $1 --track origin/$1;\
+    	git checkout -b $1 --track $2/$1;\
     	}; f"
 [user]
 	name = John Cai
