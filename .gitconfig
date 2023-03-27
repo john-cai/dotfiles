@@ -36,6 +36,7 @@
     	git branch -D $1;\
     	git checkout -b $1 --track $2/$1;\
     	}; f"
+    reference = git show -s --format=reference
 [user]
 	name = John Cai
 	email = jcai@gitlab.com
