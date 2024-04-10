@@ -1,0 +1,4 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\nunmap t\nunmap p\nunmap b\nmap T createTab\nmap gh goBack\nmap gl goFoward\nmap gj previousTab\nmap gk nextTab",
+  "settingsVersion": "2.0.5"
+}
