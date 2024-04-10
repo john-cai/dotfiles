@@ -2,6 +2,8 @@ matches:
   # Simple text replacement
   - trigger: ":avar"
     replace: "Ævar"
+  - trigger: ":jorg"
+    replace: "Jörg"
   - trigger: ":rejectrecruiter"
     form: |
       Hi, [[name]],
@@ -10,3 +12,4 @@ matches:
 
       Best,
       John
+
